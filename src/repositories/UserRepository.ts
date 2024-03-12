@@ -22,4 +22,13 @@ export class UserRepository {
             }
         });
     }
+
+    getuserByEmailAndPassword = async (email: string, password: string): Promise<User | null> => {
+        return await this.manager.findOne(User, {
+            where: {
+                email,
+                password
+            }
+        });
+    }
 }
