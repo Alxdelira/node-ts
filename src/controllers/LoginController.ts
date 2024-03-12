@@ -13,7 +13,12 @@ export class LoginController {
     login = async (request: Request, response: Response) => {
         const { email, password } = request.body;
 
-        const token = await this.userService.getTokens(email, password);        
-        return response.status(200).json({token});
+        try {
+            const token = await this.userService.getTokens(email, password);
+            return response.status(200).json({ token });
+        } catch (error) {
+            return response.status(500).json({ message: "email ou usuario Inalidos!" });
+
+        }
     }
 }
