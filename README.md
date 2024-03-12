@@ -16,7 +16,7 @@ Este projeto é uma API com Node - TypeScript que estou usando para aprender e p
 
 - CRUD: 
 ```yaml
-Created: Criar 
+Create: Criar 
 Read: Ler
 Update: Atualizar
 Delet: Deletar
@@ -44,7 +44,7 @@ Se você quiser contribuir para este projeto, siga as etapas abaixo:
 
 ## Licença :memo:
 
-Este projeto está licenciado sob a [Licença MIT]().
+Este projeto está licenciado sob a [Licença MIT](https://github.com/Alxdelira/node-ts/blob/main/LICENSE.md).
 
 ## Contato :email:
 
