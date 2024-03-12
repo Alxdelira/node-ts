@@ -2,7 +2,7 @@ import { UserService } from './../services/UserService';
 import { Request, Response } from "express"
 
 
-export default class UserController {
+export class UserController {
     userService: UserService
 
     constructor(
@@ -13,19 +13,19 @@ export default class UserController {
     creatUser = (request: Request, response: Response) => {
         const user = request.body
 
-        if (!user.name || !user.email) {
-            return response.status(400).json({ message: "Bad Request: name e email obrigatorio" })
+        if (!user.name || !user.email || !user.password) {
+            return response.status(400).json({ message: "Bad Request: Todos os campos são obrigatorios!" })
 
         }
 
-        this.userService.creatUser(user.name, user.email)
+        this.userService.creatUser(user.name, user.email, user.password)
         return response.status(201).json({ message: 'User Created' })
     }
 
-    getALlUser = (request: Request, response: Response) => {
-        const users = this.userService.getAllUsers()
-        return response.status(200).json(users)
+    getUser = (request: Request, response: Response) => {
+        return response.status(200).json
     }
+
     deleteUser = (request: Request, response: Response) => {
         const user = request.body
         console.log("deletando Usuario...", user)

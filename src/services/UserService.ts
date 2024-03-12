@@ -1,26 +1,27 @@
+import { AppDataSource } from '../database';
+import { User } from '../entities/User';
+import { UserRepository } from './../repositories/UserRepository';
 
-const db = [
-    {
-        name: "Alexandre",
-        email: "alx.delira@dev.com"
-    }
-];
+
 export class UserService {
-    deleteUser(email: string) {
-        throw new Error('Method not implemented.');
-    }
-  
-    creatUser = (name: string, email: string) =>{
-        const user ={
-            name, 
-            email
-        }
+    private userRepository: UserRepository;
 
-        db.push(user)
-        console.log("DB Atualizado", db)
+    constructor(
+        userRepository = new UserRepository(AppDataSource.manager)
+
+    ){
+        this.userRepository = userRepository;
     }
 
-    getAllUsers = () => {
-        return db
+    creatUser = (name: string, email: string, password: string) => {
+        const user = new User(name, email, password);
+        return this.userRepository.createUser(user);
+       
     }
+
+    getUser = () => {
+        
+    }
+
+   
 }
