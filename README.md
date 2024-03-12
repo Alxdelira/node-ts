@@ -11,6 +11,7 @@ Este projeto é uma API com Node - TypeScript que estou usando para aprender e p
 - SQLite
 - Express
 - Jest
+- JWT
 
 ## Funcionalidades :sparkles:
 
@@ -18,7 +19,7 @@ Este projeto é uma API com Node - TypeScript que estou usando para aprender e p
 ```yaml
 Create: Criar 
 Read: Ler
-Update: Atualizar
+Update: Atualizar 
 Delet: Deletar
 ```
 
@@ -48,4 +49,4 @@ Este projeto está licenciado sob a [Licença MIT](https://github.com/Alxdelira/
 
 ## Contato :email:
 
-Se você tiver alguma dúvida ou sugestão, entre em contato comigo pelo email: alx.delira@gmail.com
+Se você tiver alguma dúvida ou sugestão, entre em contato comigo pelo email:  <a href = "mailto:alx.delira@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
