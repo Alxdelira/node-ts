@@ -15,6 +15,10 @@ export class UserRepository {
         return await this.manager.save(user)
     }
 
+    getAllUser = async (): Promise<User[]> => {
+        return await this.manager.find(User);
+    }
+
     getUser = async (userId: string): Promise<User | null> => {
         return await this.manager.findOne(User, {
             where: {

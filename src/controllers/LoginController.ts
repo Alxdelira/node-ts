@@ -12,8 +12,10 @@ export class LoginController {
     }
     login = async (request: Request, response: Response) => {
         const { email, password } = request.body;
-
         try {
+            if (!email || !password) {
+                return response.status(400).json({ message: "Bad Request: Todos os campos são obrigatorios!" });
+            }
             const token = await this.userService.getTokens(email, password);
             return response.status(200).json({ token });
         } catch (error) {

@@ -1,10 +1,12 @@
 import { UserController } from "./UserController";
 import { Request } from 'express'
 import { makeMockResponse } from "../_mocks_/mockResponse.mock";
+import { makeMockRequest } from "../_mocks_/mockRequest.mock";
 
 const mockUserService = {
     creatUser: jest.fn(),
-    deleteUser: jest.fn()
+    deleteUser: jest.fn(),
+    getUser: jest.fn()
 }
 
 jest.mock('../services/UserService', () => {
@@ -30,7 +32,7 @@ describe('UserController', () => {
             }
         } as Request
 
-        userController.creatUser(mockRequest, mockResponse)
+        userController.createUser(mockRequest, mockResponse)
         expect(mockResponse.state.status).toBe(201)
         expect(mockResponse.state.json).toMatchObject({ message: 'User Created' })
     })
@@ -44,7 +46,7 @@ describe('UserController', () => {
             }
         } as Request 
 
-        userController.creatUser(mockRequest, mockResponse)
+        userController.createUser(mockRequest, mockResponse)
         expect(mockResponse.state.status).toBe(400)
         expect(mockResponse.state.json).toMatchObject({ message: "Bad Request: Todos os campos são obrigatorios!" })
     })
@@ -58,7 +60,7 @@ describe('UserController', () => {
             }
         } as Request 
 
-        userController.creatUser(mockRequest, mockResponse)
+        userController.createUser(mockRequest, mockResponse)
         expect(mockResponse.state.status).toBe(400)
         expect(mockResponse.state.json).toMatchObject({ message: "Bad Request: Todos os campos são obrigatorios!" })
     })
@@ -71,7 +73,7 @@ describe('UserController', () => {
             }
         } as Request 
 
-        userController.creatUser(mockRequest, mockResponse)
+        userController.createUser(mockRequest, mockResponse)
         expect(mockResponse.state.status).toBe(400)
         expect(mockResponse.state.json).toMatchObject({ message: "Bad Request: Todos os campos são obrigatorios!" })
     })
@@ -87,5 +89,17 @@ describe('UserController', () => {
         userController.deleteUser(mockRequest, mockResponse)
         expect(mockResponse.state.status).toBe(200)
         expect(mockResponse.state.json).toMatchObject({ message: 'User Deleted' })
+    })
+
+    it('Deve retornar um usuario com userId informado', () => {
+        const mockRequest = makeMockRequest( {
+            params: {
+                userId: '123456'
+            }
+        }) as Request
+
+        userController.getAllUser(mockRequest, mockResponse)
+        expect(mockResponse.state.status).toBe(200)
+        expect(mockUserService.getUser).toHaveBeenCalledWith('123456')
     })
 })

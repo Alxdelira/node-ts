@@ -2,6 +2,10 @@ import { sign } from 'jsonwebtoken';
 import { AppDataSource } from '../database';
 import { User } from '../entities/User';
 import { UserRepository } from './../repositories/UserRepository';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
 
 
 export class UserService {
@@ -20,8 +24,13 @@ export class UserService {
 
     }
 
-    getUser = () => {
+    getAllUser = (): Promise<User[]| null> => {
+        return this.userRepository.getAllUser();
 
+    }
+
+    getUserId = (userId: string): Promise<User | null> => {
+        return this.userRepository.getUser(userId);
     }
 
     getAutehnticatedUser = async (email: string, password: string): Promise<User | null> => {
@@ -38,14 +47,16 @@ export class UserService {
             email: user?.email
         }
 
-        const tokenKey = '123456789'
+        const tokenKey = process.env.TOKEN_KEY;
+
+        if (!tokenKey) throw new Error('Token key is not defined'); 
 
         const tokenOption = {
             subject: user?.user_id,
             // expiresIn: '1h'
         }
 
-        const token = sign(tokenData, tokenKey, tokenOption)
+        const token = sign(tokenData, tokenKey, tokenOption);
       
         return token;
 

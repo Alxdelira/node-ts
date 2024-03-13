@@ -2,7 +2,9 @@ import express, { Request, Response } from 'express'
 import { router } from './routes';
 import 'reflect-metadata'
 import { AppDataSource } from './database';
+import * as dotenv from 'dotenv';
 
+dotenv.config();
 
 const server = express();
 
@@ -21,4 +23,4 @@ server.get(`/`, (request: Request, response: Response) => {
     return response.status(200).json({ message: 'APi - ON' })
 })
 
-server.listen(3030, () => console.log("Server on "))
+server.listen(process.env.PORT || 5000, () => console.log("Server on "))
