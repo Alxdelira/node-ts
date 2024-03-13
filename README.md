@@ -12,6 +12,7 @@ Este projeto é uma API com Node - TypeScript que estou usando para aprender e p
 - Express
 - Jest
 - JWT
+- dotEnv
 
 ## Funcionalidades :sparkles:
 
@@ -46,6 +47,10 @@ Se você quiser contribuir para este projeto, siga as etapas abaixo:
 ## Licença :memo:
 
 Este projeto está licenciado sob a [Licença MIT](https://github.com/Alxdelira/node-ts/blob/main/LICENSE.md).
+
+## Certificado :scroll: 
+
+[Certificado!](https://github.com/Alxdelira/node-ts/blob/main/src/public/CERT_TY.pdf).
 
 ## Contato :email:
 
